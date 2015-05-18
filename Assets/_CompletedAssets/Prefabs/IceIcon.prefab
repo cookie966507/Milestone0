@@ -75,7 +75,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: .5, z: 1}
+  m_Size: {x: 1.5, y: .5, z: 1.5}
   m_Center: {x: 0, y: .5, z: 0}
 --- !u!95 &9548342
 Animator:
@@ -164,6 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  index: 0
+  pickupParticles: {fileID: 196290, guid: ebc1f961fad41424fa8821c38da08ef1, type: 2}
 --- !u!222 &22226706
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -194,7 +196,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.87732935}
+  m_LocalPosition: {x: 0, y: 0, z: -2.45330215}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22449290}
@@ -202,7 +204,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.13880062, y: 1}
+  m_AnchoredPosition: {x: -1.76994205, y: 1.36031531e-07}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22449290

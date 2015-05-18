@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace CompleteProject
 {
@@ -17,6 +18,8 @@ namespace CompleteProject
 
 		PlayerShooting playerShooting; 
 
+		Image energyBar; 
+
 		void Awake()
 		{
 			_col = GetComponent<BoxCollider>();
@@ -24,6 +27,8 @@ namespace CompleteProject
 
 			playerShooting = GetComponentInParent <PlayerShooting> ();
 			_particles.enableEmission = false;
+			energyBar = GameObject.Find("Bar").GetComponent<Image>();
+			energyBar.transform.localScale = new Vector3(0, 1, 1);
 		}
 
 		void OnTriggerStay(Collider _col)
@@ -50,7 +55,9 @@ namespace CompleteProject
 			}
 
 			_depleteTime -= Time.deltaTime;
-			Debug.Log(_depleteTime);
+			float _scaleX = _depleteTime/INIT_DEPLETE_TIME * (-1);
+			energyBar.transform.localScale = new Vector3(_scaleX, 1, 1);
+
 			if(_depleteTime <= 0)
 			{
 				canFire = false;
@@ -62,7 +69,6 @@ namespace CompleteProject
 		{
 			firing = false;
 			_col.enabled = false;
-			//_particles.Stop();
 			_particles.enableEmission = false;
 		}
 
@@ -70,6 +76,7 @@ namespace CompleteProject
 		{
 			canFire = true;
 			_depleteTime = INIT_DEPLETE_TIME;
+			energyBar.transform.localScale = new Vector3(-1, 1, 1);
 		}
 	}
 }

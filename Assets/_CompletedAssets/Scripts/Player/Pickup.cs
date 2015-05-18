@@ -7,6 +7,7 @@ namespace CompleteProject
 	{
 		public PlayerShooting.AttackType type = PlayerShooting.AttackType.None;
 		public int index = 0;
+		public GameObject pickupParticles;
 
 		private IconManager iconManager;
 
@@ -19,6 +20,12 @@ namespace CompleteProject
 		void OnDisable()
 		{
 			iconManager.UpdateFilledSpace(index);
+		}
+
+		public void Collected()
+		{
+			GameObject particles = (GameObject)Instantiate(pickupParticles, transform.root.position, transform.rotation);
+			Destroy (particles, 1.5f);
 		}
 	}
 }

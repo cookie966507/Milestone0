@@ -111,6 +111,7 @@ namespace CompleteProject
 			if(_col.tag.Equals("Pickup"))
 			{
 				playerShooting.Type = _col.GetComponent<Pickup>().type;
+				_col.GetComponent<Pickup>().Collected();
 				Destroy(_col.transform.root.gameObject);
 			}
 		}
