@@ -106,6 +106,8 @@ namespace CompleteProject
             Application.LoadLevel (Application.loadedLevel);
         }
 
+		#region ADDED
+		//detecting if pickups are in range
 		void OnTriggerEnter(Collider _col)
 		{
 			if(_col.tag.Equals("Pickup"))
@@ -115,5 +117,6 @@ namespace CompleteProject
 				Destroy(_col.transform.root.gameObject);
 			}
 		}
+		#endregion
     }
 }

@@ -5,7 +5,7 @@ namespace CompleteProject
 {
     public class PlayerShooting : MonoBehaviour
     {
-		#region ADDITION
+		#region ADDED
 		public enum AttackType
 		{
 			None,
@@ -18,7 +18,7 @@ namespace CompleteProject
 
 		private AttackType _currentAttack = AttackType.None;
 
-		private PickupWeapon _currWeapon = null;
+		private PickupWeapon _currentWeapon = null;
 		public PickupWeapon[] _weapons;
 		#endregion
 
@@ -63,10 +63,13 @@ namespace CompleteProject
                 // ... shoot the gun.
                 Shoot ();
             }
+			#region ADDED
+			//stop shooting
 			if(Input.GetButtonUp("Fire1"))
 			{
 				CeaseFire();
 			}
+			#endregion
 #else
             // If there is input on the shoot direction stick and it's time to fire...
             if ((CrossPlatformInputManager.GetAxisRaw("Mouse X") != 0 || CrossPlatformInputManager.GetAxisRaw("Mouse Y") != 0) && timer >= timeBetweenBullets)
@@ -91,33 +94,38 @@ namespace CompleteProject
             gunLight.enabled = false;
         }
 
+		#region ADDED
+		//tells the weapon to stop firing
 		void CeaseFire()
 		{
-			if(_currWeapon != null)
-				_currWeapon.EndFire();
+			if(_currentWeapon != null)
+				_currentWeapon.EndFire();
 		}
 
+		//shoots based on the current pickup
         void Shoot ()
         {
 			if(_currentAttack == AttackType.None)
 				ShootNormal();
 			else
 			{
-				if(_currWeapon == null)
+				if(_currentWeapon == null)
 					ChooseWeapon();
 
-				if(_currWeapon.canFire)
-					_currWeapon.Fire();
+				if(_currentWeapon.canFire)
+					_currentWeapon.Fire();
 				else
 					_currentAttack = AttackType.None;
 			}
 		}
 
+		//gets the weapon in association with the pickup aquired
 		void ChooseWeapon()
 		{
-			_currWeapon = _weapons[(int)_currentAttack - 1];
-			_currWeapon.gameObject.SetActive(true);
+			_currentWeapon = _weapons[(int)_currentAttack - 1];
+			_currentWeapon.gameObject.SetActive(true);
 		}
+		#endregion
 
 		void ShootNormal()
 		{
@@ -169,20 +177,23 @@ namespace CompleteProject
 			}
 		}
 
+		#region ADDED
+		//getters and setters for the Type of attack
 		public AttackType Type
 		{
 			get { return _currentAttack; }
 			set
 			{
-				if(_currWeapon != null)
+				if(_currentWeapon != null)
 				{
-					_currWeapon.EndFire();
-					_currWeapon = null;
+					_currentWeapon.EndFire();
+					_currentWeapon = null;
 				}
 				_currentAttack = value;
 				ChooseWeapon();
-				_currWeapon.NewWeponPickdUp();
+				_currentWeapon.NewWeponPickdUp();
 			}
 		}
+		#endregion
 	}
 }

@@ -10,7 +10,7 @@ namespace CompleteProject
         EnemyHealth enemyHealth;        // Reference to this enemy's health.
         NavMeshAgent nav;               // Reference to the nav mesh agent.
 
-		public Transform confusedTarget;
+		public Transform _confusedTarget; //added
 
 
         void Awake ()
@@ -28,11 +28,14 @@ namespace CompleteProject
             // If the enemy and the player have health left...
             if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
             {
-				if(confusedTarget)
-					nav.SetDestination(confusedTarget.position);
+				#region ADDED
+				//find an enemy if confused
+				if(_confusedTarget)
+					nav.SetDestination(_confusedTarget.position);
 				else
 	                // ... set the destination of the nav mesh agent to the player.
 	                nav.SetDestination (player.position);
+				#endregion
             }
             // Otherwise...
             else

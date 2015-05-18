@@ -11,18 +11,22 @@ namespace CompleteProject
         public int scoreValue = 10;                 // The amount added to the player's score when the enemy dies.
         public AudioClip deathClip;                 // The sound to play when the enemy dies.
 
-		public PlayerShooting.AttackType typeAffecting = PlayerShooting.AttackType.None;
-		private float timer = 0f;
-		private float damageStepTimer = 0f;
-		public float stepDamageTime = 1f;
-		public float hitTime = 5f;
+		#region ADDED
+		public PlayerShooting.AttackType _typeAffecting = PlayerShooting.AttackType.None;
+		private float _timer = 0f;
+		private float _damageStepTimer = 0f;
+		public float _stepDamageTime = 1f;
+		public float _hitTime = 5f;
 		private int _currentDamage = 0;
-		public bool hit = false;
+		public bool _hit = false;
 
 		public Material[] _materials;
 		public ParticleSystem[] _effectParticles;
 
-		private Transform confusedTarget;
+		private Transform _confusedTarget;
+
+		EnemyMovement _movement;
+		#endregion
 
 
         Animator anim;                              // Reference to the animator.
@@ -32,8 +36,6 @@ namespace CompleteProject
         bool isDead;                                // Whether the enemy is dead.
         bool isSinking;                             // Whether the enemy has started sinking through the floor.
 
-		EnemyMovement movement;
-
         void Awake ()
         {
             // Setting up the references.
@@ -42,15 +44,18 @@ namespace CompleteProject
             hitParticles = GetComponentInChildren <ParticleSystem> ();
             capsuleCollider = GetComponent <CapsuleCollider> ();
 
-			movement = GetComponent<EnemyMovement>();
+			_movement = GetComponent<EnemyMovement>(); //added
 
             // Setting the current health when the enemy first spawns.
             currentHealth = startingHealth;
 
+			#region
+			//set all effect particle systems to not emit
 			for(int i = 0; i < _effectParticles.Length; i++)
 			{
 				_effectParticles[i].enableEmission = false;
 			}
+			#endregion
         }
 
 
@@ -63,10 +68,12 @@ namespace CompleteProject
                 transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
             }
 
-			if(typeAffecting != PlayerShooting.AttackType.None)
+			#region ADDED
+			//update enemy affected by pickup weapons
+			if(_typeAffecting != PlayerShooting.AttackType.None)
 			{
-				timer += Time.deltaTime;
-				if(timer > hitTime)
+				_timer += Time.deltaTime;
+				if(_timer > _hitTime)
 				{
 					CeaseBeingAttacked();
 				}
@@ -75,64 +82,69 @@ namespace CompleteProject
 					UpdateBeingAttacked();
 				}
 			}
+			#endregion
         }
 
+		#region ADDED
+		//method will stop particle effects and damage taken over time once it wears off
 		void CeaseBeingAttacked()
 		{
-			switch(typeAffecting)
+			switch(_typeAffecting)
 			{
 			case PlayerShooting.AttackType.Fire:
 				GetComponent<NavMeshAgent>().speed -= 2;
-				_effectParticles[(int)typeAffecting - 1].enableEmission = false;
+				_effectParticles[(int)_typeAffecting - 1].enableEmission = false;
 				break;
 			case PlayerShooting.AttackType.Ice:
 				GetComponent<NavMeshAgent>().speed += 2;
-				_effectParticles[(int)typeAffecting - 1].enableEmission = false;
+				_effectParticles[(int)_typeAffecting - 1].enableEmission = false;
 				break;
 			case PlayerShooting.AttackType.Confusion:
-				movement.confusedTarget = null;
-				_effectParticles[(int)typeAffecting - 1].enableEmission = false;
+				_movement._confusedTarget = null;
+				_effectParticles[(int)_typeAffecting - 1].enableEmission = false;
 				break;
 			}
-			typeAffecting = PlayerShooting.AttackType.None;
-			damageStepTimer = 0f;
-			timer = 0f;
-			hit = false;
+			_typeAffecting = PlayerShooting.AttackType.None;
+			_damageStepTimer = 0f;
+			_timer = 0f;
+			_hit = false;
 			GetComponentInChildren<Renderer>().material = _materials[0];
 		}
+
+		//method will continuously apply damage and effects
 		void UpdateBeingAttacked()
 		{
-			if(!hit)
+			if(!_hit)
 			{
-				hit = true;
-				switch(typeAffecting)
+				_hit = true;
+				switch(_typeAffecting)
 				{
 				case PlayerShooting.AttackType.Fire:
 					GetComponent<NavMeshAgent>().speed += 2;
-					GetComponentInChildren<Renderer>().material = _materials[(int)typeAffecting];
-					_effectParticles[(int)typeAffecting - 1].enableEmission = true;
+					GetComponentInChildren<Renderer>().material = _materials[(int)_typeAffecting];
+					_effectParticles[(int)_typeAffecting - 1].enableEmission = true;
 					break;
 				case PlayerShooting.AttackType.Ice:
 					GetComponent<NavMeshAgent>().speed -= 2;
-					GetComponentInChildren<Renderer>().material = _materials[(int)typeAffecting];
-					_effectParticles[(int)typeAffecting - 1].enableEmission = true;
+					GetComponentInChildren<Renderer>().material = _materials[(int)_typeAffecting];
+					_effectParticles[(int)_typeAffecting - 1].enableEmission = true;
 					break;
 				case PlayerShooting.AttackType.Confusion:
-					movement.confusedTarget = GameObject.FindWithTag("Enemy").transform;
-					GetComponentInChildren<Renderer>().material = _materials[(int)typeAffecting];
-					_effectParticles[(int)typeAffecting - 1].enableEmission = true;
+					_movement._confusedTarget = GameObject.FindWithTag("Enemy").transform;
+					GetComponentInChildren<Renderer>().material = _materials[(int)_typeAffecting];
+					_effectParticles[(int)_typeAffecting - 1].enableEmission = true;
 					break;
 				}
 			}
 
-			damageStepTimer += Time.deltaTime;
-			if(damageStepTimer > stepDamageTime)
+			_damageStepTimer += Time.deltaTime;
+			if(_damageStepTimer > _stepDamageTime)
 			{
 				TakeDamage (_currentDamage, transform.position);
-				damageStepTimer = 0f;
+				_damageStepTimer = 0f;
 			}
 		}
-
+		#endregion
 
         public void TakeDamage (int amount, Vector3 hitPoint)
         {
@@ -164,8 +176,8 @@ namespace CompleteProject
 		public void UpdateDamage (int amount, PlayerShooting.AttackType type)
 		{
 			_currentDamage = amount;
-			if(typeAffecting == PlayerShooting.AttackType.None)
-				typeAffecting = type;
+			if(_typeAffecting == PlayerShooting.AttackType.None)
+				_typeAffecting = type;
 		}
 
 

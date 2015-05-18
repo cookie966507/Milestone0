@@ -16,8 +16,8 @@ namespace CompleteProject
         bool playerInRange;                         // Whether player is within the trigger collider and can be attacked.
         float timer;                                // Timer for counting up to the next attack.
 
-		EnemyMovement movement;
-		bool enemyInRange;
+		EnemyMovement _movement; //added
+		bool _enemyInRange; //added
 
 
         void Awake ()
@@ -28,7 +28,7 @@ namespace CompleteProject
             enemyHealth = GetComponent<EnemyHealth>();
             anim = GetComponent <Animator> ();
 
-			movement = GetComponent<EnemyMovement>();
+			_movement = GetComponent<EnemyMovement>(); //added
         }
 
 
@@ -40,13 +40,16 @@ namespace CompleteProject
                 // ... the player is in range.
                 playerInRange = true;
             }
-			if(movement.confusedTarget)
+			#region ADDED
+			//confused targets will now find and hur other enemies. no score is given by enemies harming each other
+			if(_movement._confusedTarget)
 			{
-				if(other.transform.Equals(movement.confusedTarget))
+				if(other.transform.Equals(_movement._confusedTarget))
 				{
-					enemyInRange = true;
+					_enemyInRange = true;
 				}
 			}
+			#endregion
 		}
 
 
@@ -58,17 +61,19 @@ namespace CompleteProject
                 // ... the player is no longer in range.
                 playerInRange = false;
             }
-			if(movement.confusedTarget)
+			#region ADDED
+			if(_movement._confusedTarget)
 			{
-				if(other.transform.Equals(movement.confusedTarget))
+				if(other.transform.Equals(_movement._confusedTarget))
 				{
-					enemyInRange = false;
+					_enemyInRange = false;
 				}
 			}
 			else
 			{
-				enemyInRange = false;
+				_enemyInRange = false;
 			}
+			#endregion
         }
 
 
@@ -85,18 +90,21 @@ namespace CompleteProject
 					// ... attack.
 					Attack ();
 				}
-				else if(enemyInRange)
+				#region ADDED
+				//checking if enemy is confused and can attack othr enemy
+				else if(_enemyInRange)
 				{
-					if(movement.confusedTarget)
+					if(_movement._confusedTarget)
 					{
 						timer = 0f;
 						
-						if(movement.confusedTarget.GetComponent<EnemyHealth>().currentHealth > 0)
+						if(_movement._confusedTarget.GetComponent<EnemyHealth>().currentHealth > 0)
 						{
-							movement.confusedTarget.GetComponent<EnemyHealth>().TakeDamage (attackDamage, movement.confusedTarget.position);
+							_movement._confusedTarget.GetComponent<EnemyHealth>().TakeDamage (attackDamage, _movement._confusedTarget.position);
 						}
 					}
 				}
+				#endregion
             }
 
             // If the player has zero or less health...
