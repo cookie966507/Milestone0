@@ -144,6 +144,45 @@
                         
                     </div>
                     <br />
+                    
+                    <hr style="margin:45px 0 35px" />
+                    
+                    <div class="lead">
+                        <h2>Milestone 1</h2> 
+                        <p><<em>***Note: My submission folder contains a readme.txt file that is formatted to the specifications in the rubric. The section below can be used as a general reference.</em></p>
+                        <h3><strong>Instructions:</strong>
+                        	<p><em>You can use keyboard controls:</em></p>
+                            <p>- W/S to move forward and backward</p>
+                            <p>- A/D to turn left and right (while moving forward or backward)
+                            <p>- Space to jump (while on ground)</p>
+                            <br/>
+                            <p><em>You can also use a controller:</em></p>
+                            <p>- Left stick vertical to move forward and backward</p>
+                            <p>- Left stick horizontal to move left and right (while moving forward or backward)</p>
+                            <p>- A to jump (while on ground)</p>
+                        	<br/>
+                        </h3>
+                        <h3><strong>Requirements:</strong>
+                            <p>- New level created with trees and rocks</p>
+                            <p>- Character is our main character created from Mixamo (although she is missing the proper attire technically)</p>
+                            <p>- Input parameter for the animation controller are Forward/Backward, Left/Right, and Jump</p>
+                            <p>- States include: Idle, Move Forward, Move Backward, Jump and NON input states: Fall and Land</p>
+                            <p>- Two blend trees in move state: One for turning and another for speed. One blend tree in Backwards for speed</p>
+                            <p>- Player controller script controlling the movemets (series of components as I believe is best practice)</p>
+                            <br/>
+                        </h3>
+                        <h3><strong>Issues:</strong>
+                        	<p>- I have confirmed the contoller is working on PC. Input manager should correctly switch between the platforms, but I'm not sure how it handles in the web player across different platforms. Please let me know if it does not work.</p>
+                            <p>- The Input manager I use allows the game to switch from keyboard to gamepad controls at runtime, but sometimes it takes a few taps of some buttons to get it to register controller input. If the controller is not working, this may be the case.</p>
+                            <p>- I had some trouble with binding the skeleton to this mesh because it came from another mesh. As a result, some body parts are distorted at the moment (like feet).</p>
+                            <p>- I had no fall animation to put in, so I freeze the animation while in the air. This causes a rough transition of animations when the player lands. You will most likely see the player floating for a moment before she puts her feet on the ground.</p>
+                            <p>- You can escape the ring of rocks in the level. Please don't.</p>
+                            <p>- The player is set to be able to jump again after they land if they land on a spot that is not too steep. This causes a bug when you are standing right next to a rock where you can't jump anymore.</p>
+                            <p>- I have a separate animation for running right/left in the game, but due to a weird Unity bug of not applying root motion to my animations, I have to manually turn the player, so she looks a bit slidey.</p>
+                         </h3>
+                        
+                    </div>
+                    <br />
 
                     <hr style="margin:45px 0 35px" />
                     
