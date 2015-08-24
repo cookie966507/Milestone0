@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">  
-	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"> <!-- Remove this Robots Meta Tag, to allow indexing of site -->
     
     <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -48,7 +47,7 @@
 
                     <div id="divLogo" class="pull-left">
                         <a href="index.html" id="divSiteTitle">Eric Cook</a><br />
-                        <a href="index.html" id="divTagLine">A member of Team (Insert Name Here)</a>
+                        <a href="index.html" id="divTagLine">A member of Team Boing</a>
                     </div>
 
                     <div id="divMenuRight" class="pull-right">
@@ -61,7 +60,7 @@
                                 <li class="dropdown active"><a href="index.html">Home</a></li>
 								<li class="dropdown"><a href="Milestone0.html">M0</a></li>
                                 <li class="dropdown">
-                                    <a href="Milestone1.html" class="dropdown">M1</a>
+                                    <a href="Milestone1.html" class="dropdown">M1</a></li>
                                 <li class="dropdown"><a href="Milestone2.html">M2</a></li>
                                 <li class="dropdown"><a href="Milestone3.html">M3</a></li>
                                 <li class="dropdown"><a href="Milestone4.html">M4</a></li>
@@ -134,7 +133,7 @@
                         	<p>- Play the game like normal.</p>
                             <p>- Pickups will spawn randomly in about 8 different locations every 3 seconds, and wll be destroyed after 5 seconds. Simply run over one to pick one up. You will see a particle effect should you get it (to differentiate it despawning while you were very close).</p>
                             <p>- You will then be able to fire the weapon for a total of 5 seconds while the fire button is held down (indicated by the bottom middle bar).</p>
-                            <p>- Enemies that are affected by a weapon will not be affected by another until the first wears off. In addition, hitting the enemies with the same pickup weapon will not do extra damage.<p>
+                            <p>- Enemies that are affected by a weapon will not be affected by another until the first wears off. In addition, hitting the enemies with the same pickup weapon will not do extra damage.</p>
                         	<br/>
                         </h3>
                         <h3><strong>Issues:</strong>
@@ -149,11 +148,11 @@
                     
                     <div class="lead">
                         <h2>Milestone 1</h2> 
-                        <p><<em>***Note: My submission folder contains a readme.txt file that is formatted to the specifications in the rubric. The section below can be used as a general reference.</em></p>
+                        <p><em>***Note: My submission folder contains a readme.txt file that is formatted to the specifications in the rubric. The section below can be used as a general reference.</em></p>
                         <h3><strong>Instructions:</strong>
                         	<p><em>You can use keyboard controls:</em></p>
                             <p>- W/S to move forward and backward</p>
-                            <p>- A/D to turn left and right (while moving forward or backward)
+                            <p>- A/D to turn left and right (while moving forward or backward)</p>
                             <p>- Space to jump (while on ground)</p>
                             <br/>
                             <p><em>You can also use a controller:</em></p>
@@ -183,6 +182,153 @@
                         
                     </div>
                     <br />
+                    
+                     <hr style="margin:45px 0 35px" />
+                    
+                    <div class="lead">
+                        <h2>Milestone 2</h2> 
+                        <p><em>***Note: Our submission folder contains a readme.txt file that is formatted to the specifications in the rubric. The section below can be used as a general reference.</em></p>
+                        <h3><strong>Instructions:</strong>
+                        	<p><em>You can use keyboard controls:</em></p>
+                            <p>- WASD to and SPACE to jump</p>
+                            <p>- Hold 'C' to crawl</p>
+                            <p>- Hold 'Left Shift' to push certain objects (freights)</p>
+                            <p>- Hold right mouse to grow a bubble and left mouse to shoot the bubble. The mouse can be used to aim while a bubble is being blown</p>
+                            <p>- Press 1 for Shawn's level of basic jumping mechanics</p>
+                            <p>- Press 2 for Eric's level dealing with slippery water streams the player can slide on</p>
+                            <p>- Press 3 for Chris' level about using your bubblegum to get to new places</p>
+                            <p>- Press 4 for Aditya's level where you can push objects</p>
+                            <p>- Press 5 for Sabrina's level where the character can crawl under obstacles</p>
+                            <br/>
+                        </h3>
+                        <h3><strong>Team Requirements:</strong>
+                            <p>- General physical interactions</p>
+                            <p>- Collider animation wehen crawling</p>
+                            <p>- Ragdoll simulation (step off the map in scene 2 or press 'P' key)</p>
+                            <p>- Game Feel: We created a girl who is a spy and jumps. She has very exaggerated jumps which are very fun to make, especially when bouncing high off tramplines. She can also shoot out pieces of bubblegum that act as bouncy objects.</p>
+                            <br/>
+                        </h3>
+                        <h3><strong>Issues:</strong>
+                        	<p>- Most of the issues lie with the sliding mechanic. One of our character controller is causing very strange issues.</p>
+                            <p>- The pushing can sometimes be decoupled.</p>
+                            <p>- Trying to shoot a piece of gum while in the air will throw a null pointer exception.</p>
+                            <p>- The camera can be a bit flinchy.</p>
+                            <p>- The camera can get stuck underground if you aim too high while shooting a piece of gum.</p>
+                            <p>- Some of the crawling colliders are a little off</p>
+                            <p>- The crawling animation has a visual glitch</p>
+                            <p>- Pushing does not work in the web build</p>
+                            <p>- The colliders for the bubblegum are off intentionally. This is to give the illusion of deformation and absorbsion as the player hits them.</p>
+                         </h3>
+                        
+                    </div>
+                    <br />
+                    
+                    <hr style="margin:45px 0 35px" />
+                    
+                    <div class="lead">
+                        <h2>Milestone 3</h2> 
+                        <p><em>***Note: Our submission folder contains a readme.txt file that is formatted to the specifications in the rubric. The section below can be used as a general reference.</em></p>
+                        <h3><strong>Instructions:</strong>
+                        	<p><em>You can use keyboard controls:</em></p>
+                            <p>- WASD to move and SPACE to jump</p>
+                            <p>- Hold right mouse to grow a bubble and left mouse to shoot the bubble. The mouse can be used to aim while a bubble is being blown</p>
+                            <p>- Press left control to sneak past sleepy cop</p>
+                            <p>- Press Delete to pause while in game</p>
+                            <br/>
+                        </h3>
+                      <h3><strong>Team Requirements:</strong>
+                            <p><span>We used Option 1: Rain AI</span></p>
+                            <p>- Created Navigation Mesh</p>
+                            <p>- 2 Navigation Targets</p>
+                            <p>- Waypoint Network</p>
+                            <p>- Waypoint Route</p>
+                            <p>- Mechanim Motor</p>
+                            <p>- Animation</p>
+                            <p>- Prediction</p>
+                            <br/>
+                        </h3>
+                        <h3><strong>Issues:</strong>
+                        	<p>- The menu system is not complete (art or functionality). You may not be able to use a controller yet, and the navigation is not setup properly. Please just use a mouse for now. There is also no title art.</p>
+							<p>- The menu will also not resize the UI properly when resolution is changed, but nothing should be distorted.</p>
+							<p>- The Janitor sometimes doesn’t run to the bubble, but he does still go to the bubble.</p>
+							<p>- The Janitor doesn’t actually “pop” a bubble. Right now, he just touches it and destroys it.</p>
+                            <p>- When a cop detects the player, the NPC is supposed to play the “hey” sound once, but the sound gets played multiple times sometimes.</p>
+							<p>- The derpy cop with the original b-tree (Btree_Derp) got stuck between two nodes of his waypoint network. He is currently using Btree_Derp2 which no longer causes that problem. It is messier and less graceful way of switching his animations, but it gets the job done.</p>
+                         </h3>
+                    </div>
+                    <br />
+                    
+                    <hr style="margin:45px 0 35px" />
+                    
+                    <div class="lead">
+                        <h2>Milestone 4</h2> 
+                        <p><em>***Note: Our submission folder contains a readme.txt file that is formatted to the specifications in the rubric. The section below can be used as a general reference.</em></p>
+                        <h3><strong>Instructions:</strong>
+                        	<p><em>You can use keyboard controls:</em></p>
+                            <p>- WASD to move and SPACE to jump</p>
+                            <p>- Press right mouse to grow a bubble and left mouse to shoot the bubble. The mouse can be used to aim while a bubble is being blown. If you press right mouse again, the current bubble you have blown up will be cancelled</p>
+                            <p>- Press left control to sneak past sleepy cop</p>
+                            <p>- Press P to pause while in game</p>
+                            <p>- Use WASD to navigate menus and return to press a button</p>
+                            <br/>
+                        </h3>
+                      <h3><strong>Team Requirements:</strong>
+                            <p>- Introduction Menu</p>
+                            <p>- Title Screen Background</p>
+                            <p>- Menu Aesthetics and Customization</p>
+                            <p>- Menu Navigation</p>
+                            <p>- Credits Visuals</p>
+                            <p>- 2 Particle Effects</p>
+                            <p>- Size-Changing Particles</p>
+                            <p>- Speed-Changing Particles</p>
+                            <p>- Custom Particle Texture & Sub Emitters</p>
+                            <p>- Continuous Environment Particle Effect</p>
+                            <br/>
+                        </h3>
+                        <h3><strong>Issues:</strong>
+                        	<p>- Animation may seem ‘slippery’ for now.</p>
+							<p>- The menu will also not resize the UI properly when resolution is changed, but nothing should be distorted.</p>
+							<p>- The Pause Menu is ever so slightly misaligned from the center.</p>
+							<p>- I’m not actually sure if a controller will work properly in a Webplayer on Macs.</p>
+                            <p>- Rotating the camera with a controller will also rotate the character for some reason.</p>
+							<p>- Didn’t want to show the bubble pop effect when the bubble cancels blowing the bubble, as it is not destroyed technically (the num bubbles remaining is kept the same). But I’m not sure if this is confusing.</p>
+                            <p>- When the game starts, the landing effect gets activated immediately even though it is not supposed to call for it until Time.time is greater than 3.</p>
+                            <p>- Although the two particle systems for the landing effect has two different colors, it is very hard to distinguish between the two. Particle System 1 is a white color, and Particle System 2 is a grayish brown color.</p>
+                         </h3>
+                    </div>
+                    <br />
+                    
+                    <hr style="margin:45px 0 35px" />
+                    
+                    <div class="lead">
+                    <h2>Final</h2> 
+                        <p><em>***Note: Our submission folder contains a readme.txt file that is formatted to the specifications in the rubric. The section below can be used as a general reference.</em></p>
+                        <h3><strong>Instructions:</strong>
+                        	<p><em>You can use keyboard controls:</em></p>
+                            <p>- WASD to move and SPACE to jump</p>
+                            <p>- Press right mouse to grow a bubble and left mouse to shoot the bubble. The mouse can be used to aim while a bubble is being blown. If you press right mouse again, the current bubble you have blown up will be cancelled</p>
+                            <p>- Press left control to sneak past sleepy cop</p>
+                            <p>- Press P to pause while in game</p>
+                            <p>- Use WASD to navigate menus and return to press a button</p>
+                            <br/>
+                            <p><em>You can use gamepad controls:</em></p>
+                            <p>- Left Joystick to move and A to jump</p>
+                            <p>- Press Left Trigger to grow a bubble and Right Trigger to shoot the bubble. The Right Joystick can be used to aim while a bubble is being blown. If you press Left Trigger again, the current bubble you have blown up will be cancelled</p>
+                            <p>- Press X to sneak past sleepy cop</p>
+                            <p>- Press Start to pause while in game</p>
+                            <p>- Use Left Joystick to navigate menus and A to press a button</p>
+                            <br/>
+                        </h3>
+                      <h3><strong>Requirements:</strong>
+                            <p>- 3D Game</p>
+                            <p>- Skeletal-Animated 3D Mesh Character Controller with Real-Time Control</p>
+                            <p>- 3D World with Physics and Spatial Simulation</p>
+                            <p>- Real-Time NPC/AI Steering Behaviors</p>
+                            <p>- Polish</p>
+                            <p>- Game Play Experience</p>
+                            <br/>
+                        </h3>
+                    </div>
 
                     <hr style="margin:45px 0 35px" />
                     
